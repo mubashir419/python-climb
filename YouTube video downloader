@@ -1,0 +1,12 @@
+from pytube import YouTube
+def download_video(url, path):
+    try:
+        yt=YouTube(url)
+        stream=yt.streams.get_highest_resolution()
+        stream.download(output_path=path)
+        print(f"Downloaded the video successfully at {path}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+url = input("Enter the url of the video:")    
+path = input("Enter the path where you want to download the video:")
+download_video(url, path)
